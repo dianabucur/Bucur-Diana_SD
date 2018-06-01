@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>HealthCare Application</title>
+
+    <div th:replace="fragments/header :: header-css"/>
+
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container">
+
+    <div class="starter-template">
+        <legend><b>Patient Calls: </b></legend>
+
+        <table  border="1" style="width:300px">
+            <thead>
+            <tr>
+                <th>Patient</th>
+                <th>Reason</th>
+                <th>Room number</th>
+            </tr>
+            </thead>
+            <tr th:each="call : ${ allcalls }">
+                <td th:text="${ call.patient.name }">Name</td>
+                <td th:text="${ call.reason }">Name</td>
+                <td th:text="${ call.patient.roomno }">Card number</td>
+            </tr>
+            <tbody>
+
+            </tbody>
+        </table>
+
+        <form th:action="@{/view-calls/take-call}">
+            <input type="submit" value="Take Call"/>
+        </form>
+    </div>
+
+</div>
+<!-- /.container -->
+
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>

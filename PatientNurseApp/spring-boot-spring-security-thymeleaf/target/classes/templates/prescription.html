@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>HealthCare Application</title>
+
+    <div th:replace="fragments/header :: header-css"/>
+
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container">
+
+    <div class="starter-template">
+        <legend><b>All Patients: </b></legend>
+
+        <table  border="1" style="width:300px">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Card number</th>
+                <th>Age</th>
+                <th>Diagnosis</th>
+                <th>Room number</th>
+            </tr>
+            </thead>
+            <tr th:each="patient : ${ patients }">
+                <td th:text="${ patient.patient_id }">Name</td>
+                <td th:text="${ patient.name }">Name</td>
+                <td th:text="${ patient.cardnr }">Card number</td>
+                <td th:text="${ patient.age }" >Pnc</td>
+                <td th:text="${ patient.disease }">Address</td>
+                <td th:text="${ patient.roomno }">Birthdate</td>
+            </tr>
+            <tbody>
+
+            </tbody>
+        </table>
+
+        <br></br>
+        <br></br>
+
+        <form th:action="@{/prescription/add-med}" th:object="${cureobj}" method="post">
+            Patient ID:
+            <select th:field="${cureobj.patient_id}">
+                <option th:each="patient : ${patients}"  th:value="${patient.patient_id}" th:text="${patient.patient_id}"></option>
+            </select>
+
+            Medicine:
+            <select th:field="${cureobj.med_id}">
+                <option th:each="med : ${meds}"  th:value="${med.id}" th:text="${med.name}"></option>
+            </select>
+            <br></br>
+            <br></br>
+            <input type="submit" class="button" name="action" value="Add Medication" />
+        </form>
+
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+    </div>
+
+</div>
+<!-- /.container -->
+
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>

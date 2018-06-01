@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>HealthCare Application</title>
+
+    <div th:replace="fragments/header :: header-css"/>
+
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container">
+
+    <div class="starter-template">
+
+        <legend><b>All Patients: </b></legend>
+
+        <table  border="1" style="width:300px">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Card number</th>
+                <th>Age</th>
+                <th>Diagnosis</th>
+                <th>Room number</th>
+            </tr>
+            </thead>
+            <tr th:each="patient : ${ patients }">
+                <td th:text="${ patient.patient_id }">Name</td>
+                <td th:text="${ patient.name }">Name</td>
+                <td th:text="${ patient.cardnr }">Card number</td>
+                <td th:text="${ patient.age }" >Pnc</td>
+                <td th:text="${ patient.disease }">Address</td>
+                <td th:text="${ patient.roomno }">Birthdate</td>
+            </tr>
+            <tbody>
+
+            </tbody>
+        </table>
+
+        <br></br>
+        <br></br>
+
+        <form th:action="@{/addpatient/create-patient}" th:object="${newPatient}" method="post">
+
+            <legend><b>Add Patient</b></legend>
+            <p> Name: <input type="text" id="name" th:field="${newPatient.name}"/></p>
+            <p> Card no.: <input type="text" id="cardnr" th:field="${newPatient.cardnr}"/></p>
+            <p> Age: <input type="text" id="age" th:field="${newPatient.age}"/></p>
+            <p> Disease: <input type="text" id="disease" th:field="${newPatient.disease}"/></p>
+            <p> Room no.: <input type="text" id="roomno" th:field="${newPatient.roomno}" /></p>
+            <input type="submit" class="button" name="create" value="Register" />
+        </form>
+
+        <br></br>
+        <br></br>
+
+        <form th:action="@{/addpatient/update-patient}" th:object="${patientobj}" method="post">
+            <legend><b>Update or delete patient:</b></legend>
+            Id:
+            <select th:field="${patientobj.patient_id}">
+                <option th:each="patient : ${patients}"  th:value="${patient.patient_id}" th:text="${patient.patient_id}"></option>
+            </select>
+            <p> Name: <input type="text" th:field="${patientobj.name}"/></p>
+            <p> Card no.: <input type="text"  th:field="${patientobj.cardnr}"/></p>
+            <p> Age: <input type="text"  th:field="${patientobj.age}"/></p>
+            <p> Disease: <input type="text"  th:field="${patientobj.disease}"/></p>
+            <p> Room no.: <input type="text" th:field="${patientobj.roomno}" /></p>
+            <input type="submit" class="button" name="action" value="Update" />
+            <input type="submit" class="button" name="action" value="Delete" />
+        </form>
+
+        <br></br>
+        <br></br>
+
+        <form th:action="@{/addpatient/create-account}" th:object="${userobj}" method="post">
+            <legend><b>Create account: </b></legend>
+            Id:
+            <select th:field="${userobj.id}">
+                <option th:each="patient : ${patients}"  th:value="${patient.patient_id}" th:text="${patient.patient_id}"></option>
+            </select>
+            <p> Username: <input type="text" th:field="${userobj.username}" /></p>
+            <p> Password: <input type="text" th:field="${userobj.password}" /></p>
+            <input type="submit" class="button" name="action" value="Create Account" />
+        </form>
+    </div>
+
+</div>
+<!-- /.container -->
+
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>

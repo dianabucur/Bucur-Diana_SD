@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container">
+
+    <div class="starter-template">
+
+        <h1 align="center"><b>MEDICAL FILE</b></h1>
+        <h3 align="center" th:inline="text">Name: [[${patientlogged.name}]]</h3>
+        <h3 align="center" th:inline="text">Card no.: [[${patientlogged.cardnr}]]</h3>
+        <h3 align="center" th:inline="text">Age: [[${patientlogged.age}]]</h3>
+        <h3 align="center" th:inline="text">Diagnosis: [[${patientlogged.disease}]]</h3>
+        <h3 align="center" th:inline="text">Room no.: [[${patientlogged.roomno}]]</h3>
+        <h3 align="center" th:inline="text">Medication: [[${patientlogged.medication}]]</h3>
+
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+
+    </div>
+
+</div>
+<!-- /.container -->
+
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>

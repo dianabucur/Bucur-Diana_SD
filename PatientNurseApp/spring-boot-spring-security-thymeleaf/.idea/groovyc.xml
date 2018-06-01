@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GroovyCompilerProjectConfiguration">
+    <option name="configScript" value="$USER_HOME$/Downloads/groovy-2.4.4" />
+    <excludes>
+      <directory url="file://$USER_HOME$/Downloads/groovy-2.4.4" includeSubdirectories="true" />
+    </excludes>
+  </component>
+</project>

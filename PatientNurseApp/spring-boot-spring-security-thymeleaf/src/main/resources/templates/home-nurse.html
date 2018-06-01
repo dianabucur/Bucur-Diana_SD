@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container">
+
+    <div class="starter-template">
+        <form th:action="@{/addpatient}">
+            <p align="center"><input type="submit" value="Add Patient"/></p>
+        </form>
+
+        <br></br>
+
+        <form th:action="@{/prescription}">
+            <p align="center"><input type="submit" value="Prescription"/></p>
+        </form>
+
+        <br></br>
+
+        <form th:action="@{/view-calls}">
+            <p align="center"><input type="submit" value="View Calls"/></p>
+        </form>
+
+        <br></br>
+
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+
+    </div>
+
+</div>
+<!-- /.container -->
+
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>
